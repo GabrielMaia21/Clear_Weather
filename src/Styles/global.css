@@ -6,64 +6,127 @@
   background-color: rgba(18, 13, 30, 1);
   color: white;
 }
-
 .container_principal {
   margin-top: 24px;
-  color: white;
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 24px;
 }
-
 .container_pesquisa {
-    
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
 
-input{
-    width: 500px;
-    height: 26px;
-    border-radius: 6px;
-    background-color: rgba(32, 43, 61, 1);
-    border: none;
+input {
+  width: 500px;
+  height: 26px;
+  border-radius: 6px;
+  background-color: rgba(32, 43, 61, 1);
+  border: none;
+  padding-left: 10px;
 }
 
-button{
-    height: 26px;
-    width: 64px;
-    border: solid 2px white;
-    border-radius: 6px;
+button {
+  height: 26px;
+  width: 64px;
+  border: solid 2px white;
+  border-radius: 6px;
+  background-color: rgba(32, 43, 61, 1);
+  cursor: pointer;
 }
 
-.container_cards{
-    display: grid;
-    grid-template-columns: 1fr 150px;
-    width: 570px;
-    padding: 8px;
+.abas {
+  display: flex;
+  gap: 8px;
+}
+
+.abas button {
+  width: auto;
+  padding: 4px 12px;
+}
+
+.container_cards {
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  width: 570px;
+  padding: 12px;
+  border-radius: 10px;
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* separa topo e base */
+  justify-content: space-between;
   height: 100%;
   gap: 24px;
 }
 
-/* textos da parte de cima */
 .linha-cima {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-/* textos da parte de baixo */
+
 .linha-baixo {
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+.container_forecast {
+  width: 570px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.card_forecast {
+  border-radius: 8px;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  text-align: center;
+}
+
+.card_forecast h3 {
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.card_forecast p {
+  font-size: 13px;
+}
+
+.card_forecast img {
+  width: 50px;
+  height: 50px;
+}
+
+/* ===================== */
+/* RESPONSIVO */
+/* ===================== */
+@media (max-width: 600px) {
+  input {
+    width: 280px;
+  }
+
+  .container_cards,
+  .container_forecast {
+    width: 90%;
+  }
+
+  .container_forecast {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

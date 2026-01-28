@@ -1,33 +1,24 @@
 function Cards({ clima }) {
   if (!clima) return null;
 
-  const {
-    name,
-    main: { temp, humidity },
-    weather: info,
-  } = clima;
-
-  const icon = info[0].icon;
-  const description = info[0].description;
-
   return (
     <div className="container_cards">
       <div className="info">
         <div className="linha-cima">
-          <h1>{name}</h1>
-          <p>Umidade: {humidity}%</p>
+          <h1>{clima.cidade}</h1>
+          <p>Umidade: {clima.umidade}%</p>
         </div>
 
         <div className="linha-baixo">
-          <h2>{Math.round(temp)}°C</h2>
-          <p>Clima: {description}</p>
+          <h2>{clima.temp}°C</h2>
+          <p>Clima: {clima.descricao}</p>
         </div>
-
       </div>
+
       <div className="img">
         <img
-          src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-          alt={description}
+          src={`https://openweathermap.org/img/wn/${clima.icon}@2x.png`}
+          alt={clima.descricao}
         />
       </div>
     </div>
