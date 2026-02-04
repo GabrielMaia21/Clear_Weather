@@ -4,6 +4,7 @@ import Pesquisa from "../components/SearchBar/Pesquisa";
 import Cards from "../components/WatherCard/Cards";
 import Error from "../components/ErrorMessage/Error";
 import { pesquisarPorCidade, previsao5Dias } from "../Services/Api";
+import CondicoesClima from "../components/Condicoes/CondicoesClima";
 
 function Home() {
   const [cidade, setCidade] = useState("");
@@ -34,9 +35,16 @@ function Home() {
 
       {(climaQuery.isError || previsaoQuery.isError) && (<Error message="Cidade não encontrada" />)}
 
-      {climaQuery.data && (<Cards clima={climaQuery.data} />)}
+      {climaQuery.data && (
+  <div className="container_layout">
 
-      {previsaoQuery.data?.length > 0 && (
+    <div className="col_left">
+      <Cards clima={climaQuery.data} />
+      <CondicoesClima clima={climaQuery.data} chanceChuva={previsaoQuery.data?.[0]?.chanceChuva ?? 0} />
+    </div>
+
+    {previsaoQuery.data?.length > 0 && (
+      <div className="col_right">
         <div className="container_forecast">
           {previsaoQuery.data.map((dia, index) => (
             <div className="card_forecast" key={index}>
@@ -50,7 +58,11 @@ function Home() {
             </div>
           ))}
         </div>
-      )}
+      </div>
+    )}
+
+  </div>
+)}
     </main>
   );
 }

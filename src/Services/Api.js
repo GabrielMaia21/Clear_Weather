@@ -51,6 +51,7 @@ export async function pesquisarPorCidade(cidade) {
     sensacao: Math.round(data.main.feels_like),
     umidade: data.main.humidity,
     vento: data.wind.speed,
+    chuva: data.pop,
     descricao: data.weather[0].description,
     icon: data.weather[0].icon,
   };
@@ -82,5 +83,6 @@ export async function previsao5Dias(cidade) {
     temp: Math.round(dia.main.temp),
     icon: dia.weather[0].icon,
     descricao: dia.weather[0].description,
+    chanceChuva: Math.round((dia.pop *100)),
   }));
 }
