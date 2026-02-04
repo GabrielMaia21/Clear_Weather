@@ -83,6 +83,6 @@ export async function previsao5Dias(cidade) {
     temp: Math.round(dia.main.temp),
     icon: dia.weather[0].icon,
     descricao: dia.weather[0].description,
-    chanceChuva: Math.round((dia.pop *100)),
+    chanceChuva: Math.round((dia.pop ?? 0) * 100),
   }));
 }
