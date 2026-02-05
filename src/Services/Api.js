@@ -86,3 +86,23 @@ export async function previsao5Dias(cidade) {
     chanceChuva: Math.round((dia.pop ?? 0) * 100),
   }));
 }
+
+export async function previsao3Horas(cidade) {
+  let data;
+
+  try {
+    data = await buscarForecast(`${cidade},BR`);
+  } catch (error) {
+    if (error.response?.status !== 404) {
+      throw error;
+    }
+
+    data = await buscarForecast(cidade);
+  
+  } return data.list.slice(0, 5).map((item) => ({
+  temp: Math.round(item.main.temp),
+  icon: item.weather[0].icon,
+  hora: item.dt_txt.split(" ")[1].slice(0, 5),
+  }),
+  
+)}
