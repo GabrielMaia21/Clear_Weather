@@ -3,8 +3,9 @@ function Previsao3Horas ({horas}){
 
     return ( 
 
-       <div className="container_condicoes">
+       <div className="container_condicoes" style={{display: "flex", flexDirection:"column", marginTop: "12px"}}>
         <h2>Previsão a cada 3 Horas</h2>
+        <div style={{display: "flex", width: "100%", marginTop: "8px", gap: "9px"}}>
          {horas.map((item)=>(
             <div>
                 <p>{item.hora}</p>
@@ -12,6 +13,7 @@ function Previsao3Horas ({horas}){
                 <p>{item.temp}°C</p>
             </div>
          ))}
+       </div>
        </div>
        
     ) 
