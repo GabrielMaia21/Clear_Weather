@@ -1,1 +1,0 @@
-// componente futuro de uma pagina com informçações "Sobre o site".

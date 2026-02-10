@@ -10,7 +10,7 @@ function Previsao({ previsao }) {
         const nomeDia = data.toLocaleDateString("pt-BR", { weekday: "long" });
 
         return (
-          <div className="card_forecast" key={index}>
+          <div key={index}>
             <h3>{nomeDia}</h3>
 
             <img

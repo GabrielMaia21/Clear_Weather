@@ -1,11 +1,16 @@
 import { useState } from "react";
-import { useQuery} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import Pesquisa from "../components/SearchBar/Pesquisa";
 import Cards from "../components/WatherCard/Cards";
 import Error from "../components/ErrorMessage/Error";
-import { pesquisarPorCidade, previsao5Dias, previsao3Horas } from "../Services/Api";
+import {
+  pesquisarPorCidade,
+  previsao5Dias,
+  previsao3Horas,
+} from "../Services/Api";
 import CondicoesClima from "../components/Condicoes/CondicoesClima";
 import Previsao3Horas from "../components/Previsao3horas/Previsao3horas";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
 function Home() {
   const [cidade, setCidade] = useState("");
@@ -34,43 +39,106 @@ function Home() {
 
   return (
     <main className="container_principal">
-      <h1>Previsão do Tempo</h1>
-
       <Pesquisa onPesquisa={pesquisar} />
 
-      {(climaQuery.isLoading || previsaoQuery.isLoading) && (<p>Carregando...</p>)}
+      {(climaQuery.isLoading || previsaoQuery.isLoading) && (
+        <p>Carregando...</p>
+      )}
 
-      {(climaQuery.isError || previsaoQuery.isError) && (<Error message="Cidade não encontrada" />)}
+      {(climaQuery.isError || previsaoQuery.isError) && (
+        <Error message="Cidade não encontrada" />
+      )}
 
       {climaQuery.data && (
-  <div className="container_layout">
+        <Box display="Flex">
+          <div className="col_left">
+            <Cards
+              clima={climaQuery.data}
+              chanceChuva={previsaoQuery.data?.[0]?.chanceChuva ?? 0}
+            />
+            <Previsao3Horas horas={previsao3HorasQuery.data} />
+            <CondicoesClima
+              clima={climaQuery.data}
+              chanceChuva={previsaoQuery.data?.[0]?.chanceChuva ?? 0}
+            />
+          </div>
 
-    <div className="col_left">
-      <Cards clima={climaQuery.data} />
-      <CondicoesClima clima={climaQuery.data} chanceChuva={previsaoQuery.data?.[0]?.chanceChuva ?? 0} />
-      <Previsao3Horas horas={previsao3HorasQuery.data} />
-    </div>
+          {previsaoQuery.data?.length > 0 && (
+            <Box>
+              <Box
+                bg="rgba(32, 43, 61, 1)"
+                borderRadius="xl"
+                p={5} // aumentei um pouco o padding geral
+                w="320px"
+                h="627px"
+                boxShadow="lg"
+                display="flex"
+                flexDirection="column"
+              >
+                <Text
+                  fontSize="sm"
+                  color="white"
+                  mb={5} // mais espaço abaixo do título
+                  fontWeight="medium"
+                >
+                  Previsão de 5 dias
+                </Text>
 
-    {previsaoQuery.data?.length > 0 && (
-      <div className="col_right">
-        <div className="container_forecast">
-          {previsaoQuery.data.map((dia, index) => (
-            <div className="card_forecast" key={index}>
-              <h3>{dia.data}</h3>
-              <img
-                src={`https://openweathermap.org/img/wn/${dia.icon}.png`}
-                alt={dia.descricao}
-              />
-              <p>{dia.temp}°C</p>
-              <p>{dia.descricao}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    )}
+                {/* Container principal dos dias */}
+                <Box
+                  flex="1" // ocupa todo o espaço restante
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="space-evenly" // distribui igualmente o espaço
+                  gap={3} // espaço mínimo entre os itens
+                >
+                  {previsaoQuery.data.map((dia, index) => (
+                    <Box key={index}>
+                      <Flex
+                        align="center"
+                        justify="space-between"
+                        px={3} // padding lateral interno
+                        py={2}
+                        borderRadius="md"
+                        _hover={{ bg: "whiteAlpha.50" }} // feedback visual opcional
+                        transition="background 0.2s"
+                      >
+                        <Text
+                          fontSize="16px"
+                          minW="90px" // evita quebra em dias longos
+                          fontWeight="500"
+                        >
+                          {dia.data}
+                        </Text>
 
-  </div>
-)}
+                        <Image
+                          src={`https://openweathermap.org/img/wn/${dia.icon}@2x.png`} // @2x fica mais nítido
+                          alt={dia.descricao}
+                          boxSize="48px" // ícone maior = melhor legibilidade
+                          fallbackSrc="https://via.placeholder.com/48?text=?" // boa prática
+                        />
+
+                        <Text
+                          fontSize="18px"
+                          fontWeight="bold"
+                          minW="60px"
+                          textAlign="right"
+                        >
+                          {dia.temp}°C
+                        </Text>
+                      </Flex>
+
+                      {index < previsaoQuery.data.length - 1 && (
+                        <Box h="1px" bg="whiteAlpha.200" mx={3} my={1} />
+                      )}
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+            </Box>
+          )}
+        </Box>
+      )}
     </main>
   );
 }
