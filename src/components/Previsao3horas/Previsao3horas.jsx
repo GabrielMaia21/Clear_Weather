@@ -5,8 +5,37 @@ import {
   Image
 } from "@chakra-ui/react";
 
+import iconSol from "../../assets/icons/clima/ceu-limpo-dia.webp";
+import iconLua from "../../assets/icons/clima/ceu-limpo-noite-miniatura.webp"
+import iconSolNublado from "../../assets/icons/clima/poucas-nuvens-dia.webp"
+import iconLuaNublada from "../../assets/icons/clima/poucas-nuvens-noite.webp"
+import iconNublado from "../../assets/icons/clima/nublado.webp";
+import iconLuaChuva from "../../assets/icons/clima/chuva-leve-noite.webp"
+import iconSolChuva from "../../assets/icons/clima/chuva-leve-dia.webp"
+import iconTempestade from "../../assets/icons/clima/tempestade.webp"
+import iconNeve from "../../assets/icons/clima/neve.webp"
+
 function Previsao3Horas({ horas }) {
   if (!horas || horas.length === 0) return null;
+
+    const iconesClima = {
+      "01d": iconSol,
+      "01n": iconLua,
+      "02d": iconSolNublado,
+      "02n": iconLuaNublada,
+      "03d": iconNublado,
+      "03n": iconNublado,
+      "04d": iconNublado,
+      "04n": iconNublado,
+      "10d": iconSolChuva,
+      "10n": iconLuaChuva,
+      "11d": iconTempestade,
+      "11n": iconTempestade,
+      "13d": iconNeve,
+      "13n": iconNeve,
+      "50d": iconNublado,
+      "50n": iconNublado,
+    }
 
   return (
     <Box
@@ -45,7 +74,7 @@ function Previsao3Horas({ horas }) {
 
             {/* Ícone */}
             <Image
-              src={`https://openweathermap.org/img/wn/${item.icon}.png`}
+              src={iconesClima[item.icon] || `https://openweathermap.org/img/wn/${item.icon}@2x.png`}
               alt="Ícone clima"
               boxSize="40px"
               mb={2}

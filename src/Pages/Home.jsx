@@ -10,6 +10,7 @@ import {
 } from "../Services/Api";
 import CondicoesClima from "../components/Condicoes/CondicoesClima";
 import Previsao3Horas from "../components/Previsao3horas/Previsao3horas";
+import Previsao from "../components/Previsao/Previsao";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
 function Home() {
@@ -50,7 +51,7 @@ function Home() {
       )}
 
       {climaQuery.data && (
-        <Box display="Flex">
+        <Box display="flex">
           <div className="col_left">
             <Cards
               clima={climaQuery.data}
@@ -65,76 +66,7 @@ function Home() {
 
           {previsaoQuery.data?.length > 0 && (
             <Box>
-              <Box
-                bg="rgba(32, 43, 61, 1)"
-                borderRadius="xl"
-                p={5} // aumentei um pouco o padding geral
-                w="320px"
-                h="627px"
-                boxShadow="lg"
-                display="flex"
-                flexDirection="column"
-              >
-                <Text
-                  fontSize="sm"
-                  color="white"
-                  mb={5} // mais espaço abaixo do título
-                  fontWeight="medium"
-                >
-                  Previsão de 5 dias
-                </Text>
-
-                {/* Container principal dos dias */}
-                <Box
-                  flex="1" // ocupa todo o espaço restante
-                  display="flex"
-                  flexDirection="column"
-                  justifyContent="space-evenly" // distribui igualmente o espaço
-                  gap={3} // espaço mínimo entre os itens
-                >
-                  {previsaoQuery.data.map((dia, index) => (
-                    <Box key={index}>
-                      <Flex
-                        align="center"
-                        justify="space-between"
-                        px={3} // padding lateral interno
-                        py={2}
-                        borderRadius="md"
-                        _hover={{ bg: "whiteAlpha.50" }} // feedback visual opcional
-                        transition="background 0.2s"
-                      >
-                        <Text
-                          fontSize="16px"
-                          minW="90px" // evita quebra em dias longos
-                          fontWeight="500"
-                        >
-                          {dia.data}
-                        </Text>
-
-                        <Image
-                          src={`https://openweathermap.org/img/wn/${dia.icon}@2x.png`} // @2x fica mais nítido
-                          alt={dia.descricao}
-                          boxSize="48px" // ícone maior = melhor legibilidade
-                          fallbackSrc="https://via.placeholder.com/48?text=?" // boa prática
-                        />
-
-                        <Text
-                          fontSize="18px"
-                          fontWeight="bold"
-                          minW="60px"
-                          textAlign="right"
-                        >
-                          {dia.temp}°C
-                        </Text>
-                      </Flex>
-
-                      {index < previsaoQuery.data.length - 1 && (
-                        <Box h="1px" bg="whiteAlpha.200" mx={3} my={1} />
-                      )}
-                    </Box>
-                  ))}
-                </Box>
-              </Box>
+              <Previsao previsao={previsaoQuery.data}/>
             </Box>
           )}
         </Box>
