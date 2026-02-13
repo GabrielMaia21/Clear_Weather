@@ -37,7 +37,7 @@ function Previsao({ previsao }) {
       <Box
         bg="rgba(32, 43, 61, 1)"
         borderRadius="xl"
-        p={5} // aumentei um pouco o padding geral
+        p={5} 
         w="320px"
         h="627px"
         boxShadow="lg"
@@ -47,19 +47,18 @@ function Previsao({ previsao }) {
         <Text
           fontSize="sm"
           color="white"
-          mb={5} // mais espaço abaixo do título
+          mb={5} 
           fontWeight="medium"
         >
           Previsão de 5 dias
         </Text>
 
-        {/* Container principal dos dias */}
         <Box
-          flex="1" // ocupa todo o espaço restante
+          flex="1" 
           display="flex"
           flexDirection="column"
-          justifyContent="space-evenly" // distribui igualmente o espaço
-          gap={3} // espaço mínimo entre os itens
+          justifyContent="space-evenly" 
+          gap={3} 
         >
           {previsao.map((dia, index) => {
             return(
@@ -67,15 +66,15 @@ function Previsao({ previsao }) {
               <Flex
                 align="center"
                 justify="space-between"
-                px={3} // padding lateral interno
+                px={3} 
                 py={2}
                 borderRadius="md"
-                _hover={{ bg: "whiteAlpha.50" }} // feedback visual opcional
+                _hover={{ bg: "whiteAlpha.50" }} 
                 transition="background 0.2s"
               >
                 <Text
                   fontSize="16px"
-                  minW="90px" // evita quebra em dias longos
+                  minW="90px" 
                   fontWeight="500"
                 >
                   {dia.data}
@@ -84,8 +83,8 @@ function Previsao({ previsao }) {
                 <Image
                   src={iconesClima[dia.icon] || `https://openweathermap.org/img/wn/${dia.icon}@2x.png`}
                   alt={dia.descricao}
-                  boxSize="48px" // ícone maior = melhor legibilidade
-                  fallbackSrc="https://via.placeholder.com/48?text=?" // boa prática
+                  boxSize="48px" 
+                  fallbackSrc="https://via.placeholder.com/48?text=?"
                 />
 
                 <Text

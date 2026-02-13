@@ -10,6 +10,7 @@
 
 html,body, #root{
   background-color: rgba(13, 18, 30, 1);
+  overflow-y: hidden;
 }
 
 .container_principal {

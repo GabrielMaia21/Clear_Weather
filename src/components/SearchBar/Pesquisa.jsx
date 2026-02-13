@@ -1,6 +1,13 @@
 import { useState } from "react";
+import {
+  Input,
+  InputGroup,
+  Image,
+  InputLeftElement,
+  Text,
+} from "@chakra-ui/react";
 import { buscarCidade } from "../../Services/GeoApi";
-import { Input, Text } from "@chakra-ui/react";
+import busca from "../../assets/icons/interface/busca.png";
 
 function Pesquisa({ onPesquisa }) {
   const [cidade, setCidade] = useState("");
@@ -42,25 +49,29 @@ function Pesquisa({ onPesquisa }) {
 
   return (
     <form className="container_pesquisa" onSubmit={enviar}>
-      <Input
-        className="input_pesquisa"
-        type="text"
-        placeholder="🔍 Digite o nome da Cidade"
-        value={cidade}
-        width="897px"
-        height="51px"
-        size={18}
-        p="6px"
-        bg="202B3D"
-        border="none"
-        borderRadius={16}
-        onChange={(envio) => alterarValor(envio)}
-      />
+      <InputGroup w="897px">
+        <InputLeftElement w="60px" minH={"51px"}>
+          <Image w={"24px"} src={busca} />
+        </InputLeftElement>
+        <Input
+          minH={"51px"}
+          type="text"
+          placeholder="Digite o nome da Cidade"
+          _placeholder={{color: "rgba(255, 255, 255, 0.8)"}}
+          value={cidade}
+          pl="50px"
+          size={18}
+          bg="#202B3D"
+          border="none"
+          borderRadius={16}
+          onChange={(envio) => alterarValor(envio)}
+        />
+      </InputGroup>
       {sugestoes.length > 0 && (
         <ul className="lista-sugestao">
           {sugestoes.map((item, index) => (
             <Text
-            bg="rgba(13, 18, 30, 1);"
+              bg="rgba(13, 18, 30, 1);"
               onClick={() => selecionarCidade(item)}
               className="lista-item"
               key={index}
