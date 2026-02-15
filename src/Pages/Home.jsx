@@ -85,12 +85,7 @@ function Home2() {
             href="https://github.com/GabrielMaia21/Clear_Weather"
             target="_blank"
           >
-            <Box
-              display={"flex"}
-              alignItems={"center"}
-              gap={2}
-              
-            >
+            <Box display={"flex"} alignItems={"center"} gap={2}>
               <FaGithub size={22} />
               <Text
                 fontSize={22}
@@ -116,38 +111,56 @@ function Home2() {
         flexDir={"column"}
       >
         <Box display={"flex"} alignItems={"center"} gap={4} cursor={"default"}>
-          <Image src={logo} w={"102px"} />
-          <Text fontSize={56} textColor={"#ffffffda"}>
+          <Image src={logo} w={{ lg: "102px", md: "90px", sm: "78px" }} />
+          <Text
+            fontSize={{ lg: "56px", md: "48px", sm: "40px" }}
+            textColor={"#ffffffda"}
+          >
             ClearWeather
           </Text>
         </Box>
         <Box>
-          <Text fontSize={25} textColor={"#ffffffda"}>
+          <Text
+            fontSize={{ lg: "25px", md: "22px", sm: "17px" }}
+            fontWeight={"normal"}
+            textColor={"#ffffffda"}
+          >
             Pesquise o clima de qualquer cidade em segundos.
           </Text>
         </Box>
 
-        <form onSubmit={enviar}>
-          <Box position={"relative"} overflow="visible">
+        <Box as="form" onSubmit={enviar} w="100%">
+          <Box
+            position={"relative"}
+            overflow="visible"
+            mx="auto"
+            w="100%"
+            maxW={{ base: "340px", sm: "450px", md: "700px", lg: "800px" }}
+          >
             <InputGroup
-              w="800px"
+              w="100%"
+              maxW={{ md: "700px", lg: "800px", sm: "450px" }}
               boxShadow={"dark-lg"}
+              mx={"auto"}
               borderRadius={12}
               opacity={"0.8"}
-              mt={5}
+              mt={{ md: 5, base: 12 }}
               border="1px solid #ffffff1d"
             >
-              <InputLeftElement w="70px" minH={"71px"}>
-                <Image w={"28px"} src={busca} />
+              <InputLeftElement
+                w={{ md: "70px", sm: "55px" }}
+                minH={{ lg: "71px", md: "65px", sm: "59px" }}
+              >
+                <Image w={{ md: "28px", sm: "26px" }} src={busca} />
               </InputLeftElement>
               <Input
                 value={cidade}
-                minH={"71px"}
+                h={{ lg: "71px", md: "65px", sm: "59px" }}
                 type="text"
-                fontSize={22}
+                fontSize={{ lg: "22px", md: "20px", sm: "18px" }}
                 placeholder="Digite o nome da Cidade"
                 _placeholder={{ color: "rgba(255, 255, 255, 0.8)" }}
-                pl="65px"
+                pl={{ md: "65px", sm: "55px" }}
                 fontWeight={"light"}
                 size={18}
                 bg="#20304F"
@@ -162,10 +175,10 @@ function Home2() {
                 top="100%"
                 left={0}
                 right={0}
-                w="800px"
+                w={{ md: "100%", sm: "450px" }}
                 bg="rgba(13, 18, 30, 0.95)"
                 borderRadius="12px"
-                zIndex={999}
+                // zIndex={999}
                 color="white"
                 boxShadow="dark-lg"
                 listStyleType="none"
@@ -176,17 +189,18 @@ function Home2() {
                   <Box
                     as="li"
                     bg="rgba(13, 18, 30, 1)"
-                    p={"10px 12px"}
-                    fontSize={18}
+                    p={{ md: "10px 12px", sm: "12px" }}
+                    fontSize={{ md: "18px", sm: "15px" }}
                     key={index}
                     color="white"
-                    zIndex={999}
+                    // zIndex={999}
                     cursor={"pointer"}
                     opacity={0.8}
                     fontWeight={"light"}
                     _hover={{
                       bg: "#172035",
                     }}
+                    transition={"0.3s all ease-out"}
                     onClick={() => selecionarCidade(item)}
                   >
                     {item.cidade}, {item.pais}
@@ -195,7 +209,7 @@ function Home2() {
               </Box>
             )}
           </Box>
-        </form>
+        </Box>
       </Box>
 
       <Box
@@ -205,15 +219,19 @@ function Home2() {
         display={"flex"}
         justifyContent={"center"}
         mb={6}
+        pb={{ base: 10, md: 0 }}
       >
-        <Text fontSize={25} textColor={"#ffffffda"} fontWeight={"light"}>
-          Clima em tempo real via {" "}
+        <Text
+          fontSize={{ lg: "25px", md: "22px", sm: "19px" }}
+          textColor={"#ffffffda"}
+          fontWeight={"light"}
+        >
+          Clima em tempo real via{" "}
           <Link
             href="https://openweathermap.org/api"
             target="_blank"
             fontWeight={"medium"}
           >
-            
             OpenWeather API
           </Link>
         </Text>
