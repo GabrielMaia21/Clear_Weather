@@ -45,13 +45,16 @@ function Previsao3Horas({ horas }) {
       mt={4}
       mb={4}
       w="100%"
-      maxW="520px"
+      maxW="897px"
+      h="252px"
       boxShadow="dark-lg"
+      
     >
       {/* Título */}
       <Text
-        fontSize="sm"
         color="whiteAlpha.700"
+        fontSize="15px"
+        m={1}
         mb={4}
       >
         Previsão de hoje
@@ -64,11 +67,12 @@ function Previsao3Horas({ horas }) {
             key={index}
             direction="column"
             align="center"
+            
             flex="1"
             position="relative"
           >
             {/* Hora */}
-            <Text fontSize="sm" mb={2}>
+            <Text fontSize="18px" mb={6}>
               {item.hora}
             </Text>
 
@@ -76,12 +80,12 @@ function Previsao3Horas({ horas }) {
             <Image
               src={iconesClima[item.icon] || `https://openweathermap.org/img/wn/${item.icon}@2x.png`}
               alt="Ícone clima"
-              boxSize="40px"
-              mb={2}
+              boxSize="56px"
+              mb={6}
             />
 
             {/* Temperatura */}
-            <Text fontWeight="medium">
+            <Text fontSize={"18px"} fontWeight="medium">
               {item.temp}°
             </Text>
 

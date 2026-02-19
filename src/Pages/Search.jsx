@@ -47,41 +47,56 @@ function Search() {
   }
 
   return (
-    <main className="container_principal">
-      <Pesquisa onPesquisa={pesquisar} />
+    <Box
+      as="main"
+      display={"flex"}
+      justifyContent={"center"}
+      w="100vw"
+      h="100%"
+      mt={8}
+      px={4}
+    >
+      <Box 
+        display="flex"
+        flexDirection={{ base: "column", md: "row", lg: "row" }}
+        gap={8} 
+        alignItems="flex-start" 
+        w="100%" 
+        maxW="1340px"
+      >
+        
+        <Box display="flex" gap={6} flexDir={"column"} w="100%" maxW="897px">
+          <Pesquisa onPesquisa={pesquisar} />
 
-      {(climaQuery.isLoading || previsaoQuery.isLoading) && (
-        <p>Carregando...</p>
-      )}
-
-      {(climaQuery.isError || previsaoQuery.isError) && (
-        <Error message="Cidade não encontrada" />
-      )}
-
-      {climaQuery.data && (
-        <Box display="flex">
-          <div className="col_left">
-            <Cards
-              clima={climaQuery.data}
-              chanceChuva={previsaoQuery.data?.[0]?.chanceChuva ?? 0}
-            />
-            <Previsao3Horas horas={previsao3HorasQuery.data} />
-            <CondicoesClima
-              clima={climaQuery.data}
-              chanceChuva={previsaoQuery.data?.[0]?.chanceChuva ?? 0}
-            />
-          </div>
-
-          {previsaoQuery.data?.length > 0 && (
-            <Box>
-              <Previsao previsao={previsaoQuery.data} />
-            </Box>
+          {(climaQuery.isLoading || previsaoQuery.isLoading) && (
+            <p>Carregando...</p>
           )}
+
+          {(climaQuery.isError || previsaoQuery.isError) && (
+            <Error message="Cidade não encontrada" />
+          )}
+
+          <Cards
+            clima={climaQuery.data}
+            chanceChuva={previsaoQuery.data?.[0]?.chanceChuva ?? 0}
+          />
+
+          <Previsao3Horas horas={previsao3HorasQuery.data} />
+
+          <CondicoesClima
+            clima={climaQuery.data}
+            chanceChuva={previsaoQuery.data?.[0]?.chanceChuva ?? 0}
+          />
         </Box>
-      )}
-    </main>
+
+        {climaQuery.data && previsaoQuery.data?.length > 0 && (
+          <Box alignSelf={{lg: "end", base: "auto"}} w="100%" maxW={"420px"}>
+            <Previsao previsao={previsaoQuery.data} />
+          </Box>
+        )}
+      </Box>
+    </Box>
   );
 }
 export default Search;
-
 //componente principal

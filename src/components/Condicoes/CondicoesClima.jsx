@@ -10,61 +10,63 @@ function CondicoesClima({ clima, chanceChuva }) {
       borderRadius="2xl"
       p={5}
       w="100%"
-      maxW="520px"
+      maxW="897px"
+      h="252px"
       boxShadow="dark-lg"
     >
       <Text
-        fontSize="sm"
+        fontSize="15px"
+        m={1}
         color="whiteAlpha.700"
         mb={4}
       >
         Condições climáticas
       </Text>
 
-      <SimpleGrid columns={2} spacing={6}>
+      <SimpleGrid px={5} columns={2} spacing={55}>
         <Flex align="center" gap={3}>
-          <Icon as={WiThermometer} boxSize={6} color="whiteAlpha.700" />
+          <Icon as={WiThermometer} boxSize={8} color="whiteAlpha.700" />
           <Box>
-            <Text fontSize="sm" color="whiteAlpha.600">
+            <Text fontSize="16px" color="whiteAlpha.600">
               Sensação térmica
             </Text>
-            <Text fontSize="lg" fontWeight="medium">
+            <Text fontSize="18px" fontWeight="medium">
               {clima.sensacao}°
             </Text>
           </Box>
         </Flex>
 
         <Flex align="center" gap={3}>
-          <Icon as={WiStrongWind} boxSize={6} color="whiteAlpha.700" />
+          <Icon as={WiStrongWind} boxSize={8} color="whiteAlpha.700" />
           <Box>
-            <Text fontSize="sm" color="whiteAlpha.600">
+            <Text fontSize="16px" color="whiteAlpha.600">
               Velocidade do vento
             </Text>
-            <Text fontSize="lg" fontWeight="medium">
+            <Text fontSize="18px" fontWeight="medium">
               {clima.vento} km/h
             </Text>
           </Box>
         </Flex>
 
         <Flex align="center" gap={3}>
-          <Icon as={WiRain} boxSize={6} color="whiteAlpha.700" />
+          <Icon as={WiRain} boxSize={8} color="whiteAlpha.700" />
           <Box>
-            <Text fontSize="sm" color="whiteAlpha.600">
+            <Text fontSize="16px" color="whiteAlpha.600">
               Chance de chuva
             </Text>
-            <Text fontSize="lg" fontWeight="medium">
+            <Text fontSize="18px" fontWeight="medium">
               {chanceChuva ?? 0}%
             </Text>
           </Box>
         </Flex>
 
         <Flex align="center" gap={3}>
-          <Icon as={WiHumidity} boxSize={6} color="whiteAlpha.700" />
+          <Icon as={WiHumidity} boxSize={8} color="whiteAlpha.700" />
           <Box>
-            <Text fontSize="sm" color="whiteAlpha.600">
+            <Text fontSize="16px" color="whiteAlpha.600">
               Umidade do ar
             </Text>
-            <Text fontSize="lg" fontWeight="medium">
+            <Text fontSize="18px" fontWeight="medium">
               {clima.umidade}%
             </Text>
           </Box>

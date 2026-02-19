@@ -33,17 +33,17 @@ function Cards({ clima, chanceChuva }) {
   }
 
   return (
-    <div className="container_cards">
-      <div className="info">
-        <div className="linha-cima">
+    <Box p={5} display={"flex"} justifyContent={"space-between"} h={"218px"}>
+      <Box>
+        <Box display={"flex"} flexDir={"column"} gap={1}>
           <Text fontSize={36}>{clima.cidade}</Text>
-          <Text fontSize={14}>Chance de Chuva: {chanceChuva ?? 0}%</Text>
-        </div>
+          <Text color={"#AAB4C3"} fontSize={14}>Chance de Chuva: {chanceChuva ?? 0}%</Text>
+        </Box>
 
-        <div className="linha-baixo">
+        <Box display={"flex"} mt={6}>
           <Text fontSize={64}>{clima.temp}°C</Text>
-        </div>
-      </div>
+        </Box>
+      </Box>
 
       <Box w={"150px"}>
         <Image
@@ -52,7 +52,7 @@ function Cards({ clima, chanceChuva }) {
           alt={clima.descricao}
         />
       </Box>
-    </div>
+    </Box>
   );
 }
 

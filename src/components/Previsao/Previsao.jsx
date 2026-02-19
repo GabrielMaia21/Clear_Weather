@@ -38,16 +38,18 @@ function Previsao({ previsao }) {
       boxShadow="dark-lg"
         bg="rgba(32, 43, 61, 1)"
         borderRadius="xl"
-        p={5} 
-        w="320px"
-        h="627px"
+        p={5}
+        w="100%" 
+        maxW="419px"
+        h="810px"
 
         display="flex"
         flexDirection="column"
       >
         <Text
-          fontSize="sm"
-          color="white"
+          fontSize="15px"
+          m={1}
+          color="whiteAlpha.700"
           mb={5} 
           fontWeight="medium"
         >
@@ -68,7 +70,7 @@ function Previsao({ previsao }) {
                 align="center"
                 justify="space-between"
                 px={3} 
-                py={2}
+                py={8}
                 borderRadius="md"
                 _hover={{ bg: "whiteAlpha.50" }} 
                 transition="background 0.2s"
@@ -84,12 +86,12 @@ function Previsao({ previsao }) {
                 <Image
                   src={iconesClima[dia.icon] || `https://openweathermap.org/img/wn/${dia.icon}@2x.png`}
                   alt={dia.descricao}
-                  boxSize="48px" 
+                  boxSize="52px" 
                   fallbackSrc="https://via.placeholder.com/48?text=?"
                 />
 
                 <Text
-                  fontSize="18px"
+                  fontSize="22px"
                   fontWeight="bold"
                   minW="60px"
                   textAlign="right"
