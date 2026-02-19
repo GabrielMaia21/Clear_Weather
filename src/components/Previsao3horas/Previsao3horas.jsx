@@ -41,38 +41,41 @@ function Previsao3Horas({ horas }) {
     <Box
       bg="rgba(32, 43, 61, 1)"
       borderRadius="2xl"
-      p={5}
+      p={{base: 3, md: 5, sm: 4}}
       mt={4}
       mb={4}
       w="100%"
-      maxW="897px"
-      h="252px"
+      maxW={{base:"100%", lg:"container.md"}}
       boxShadow="dark-lg"
-      
     >
       {/* Título */}
       <Text
+        fontSize={{sm:"sm", base: "xs", md:"md"}}
         color="whiteAlpha.700"
-        fontSize="15px"
-        m={1}
-        mb={4}
+        mb={{base: "3", md:"4"}}
       >
         Previsão de hoje
       </Text>
 
       {/* Linha de horários */}
-      <Flex justify="space-between" align="center">
+      <Flex 
+      justify="space-between" 
+      align="center"
+      flexWrap={{base:"wrap", md:"nowrap"}}
+      gap={{base: 4, md: 0}}
+      >
         {horas.map((item, index) => (
           <Flex
             key={index}
             direction="column"
             align="center"
-            
             flex="1"
+            minW={{base: "30%", sm: "22%", md: "auto"}}
             position="relative"
           >
             {/* Hora */}
-            <Text fontSize="18px" mb={6}>
+            <Text fontSize={{sm: "sm", base:"xs"}}
+            mb={2}>
               {item.hora}
             </Text>
 
@@ -80,18 +83,21 @@ function Previsao3Horas({ horas }) {
             <Image
               src={iconesClima[item.icon] || `https://openweathermap.org/img/wn/${item.icon}@2x.png`}
               alt="Ícone clima"
-              boxSize="56px"
-              mb={6}
+              boxSize={{base:"32px", md:"40px", sm:"36px"}}
+              mb={2}
             />
 
             {/* Temperatura */}
-            <Text fontSize={"18px"} fontWeight="medium">
+            <Text fontWeight="medium"
+            fontSize={{base: "sm", md:"md"}}
+            >
               {item.temp}°
             </Text>
 
             {/* Divisor vertical */}
             {index < horas.length - 1 && (
               <Box
+                display={{base:"none", md: "block"}}
                 position="absolute"
                 right="0"
                 top="15%"
