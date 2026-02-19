@@ -30,81 +30,83 @@ const iconesClima = {
 };
 
 function Previsao({ previsao }) {
-  if(!previsao) return null
+  if (!previsao) return null;
 
   return (
     <Box>
       <Box
-      boxShadow="dark-lg"
+        boxShadow="dark-lg"
         bg="rgba(32, 43, 61, 1)"
         borderRadius="xl"
-        p={5}
-        w="100%" 
+        p={{ base: 4, md: 5 }}
+        w="100%"
         maxW="419px"
-        h="810px"
-
+        h={{ base: "auto", md: "810px" }}
         display="flex"
         flexDirection="column"
       >
         <Text
-          fontSize="15px"
+          fontSize={{ base: "14px", md: "15px" }}
           m={1}
           color="whiteAlpha.700"
-          mb={5} 
+          mb={5}
           fontWeight="medium"
         >
           Previsão de 5 dias
         </Text>
 
         <Box
-          flex="1" 
+          flex="1"
           display="flex"
           flexDirection="column"
-          justifyContent="space-evenly" 
-          gap={3} 
+          justifyContent="space-evenly"
+          gap={{ base: 2, md: 3 }}
         >
           {previsao.map((dia, index) => {
-            return(
-            <Box key={index}>
-              <Flex
-                align="center"
-                justify="space-between"
-                px={3} 
-                py={8}
-                borderRadius="md"
-                _hover={{ bg: "whiteAlpha.50" }} 
-                transition="background 0.2s"
-              >
-                <Text
-                  fontSize="16px"
-                  minW="90px" 
-                  fontWeight="500"
+            return (
+              <Box key={index}>
+                <Flex
+                  align="center"
+                  justify="space-between"
+                  px={{ base: 2, md: 3 }}
+                  py={{ base: 4, md: 8 }}
+                  borderRadius="md"
+                  _hover={{ bg: "whiteAlpha.50" }}
+                  transition="background 0.2s"
                 >
-                  {dia.data}
-                </Text>
+                  <Text
+                    fontSize={{ base: "14px", md: "16px" }}
+                    minW={{ base: "70px", md: "90px" }}
+                    fontWeight="500"
+                  >
+                    {dia.data}
+                  </Text>
 
-                <Image
-                  src={iconesClima[dia.icon] || `https://openweathermap.org/img/wn/${dia.icon}@2x.png`}
-                  alt={dia.descricao}
-                  boxSize="52px" 
-                  fallbackSrc="https://via.placeholder.com/48?text=?"
-                />
+                  <Image
+                    src={
+                      iconesClima[dia.icon] ||
+                      `https://openweathermap.org/img/wn/${dia.icon}@2x.png`
+                    }
+                    alt={dia.descricao}
+                    boxSize={{ base: "40px", md: "52px" }}
+                    fallbackSrc="https://via.placeholder.com/48?text=?"
+                  />
 
-                <Text
-                  fontSize="22px"
-                  fontWeight="bold"
-                  minW="60px"
-                  textAlign="right"
-                >
-                  {dia.temp}°C
-                </Text>
-              </Flex>
+                  <Text
+                    fontSize={{ base: "18px", md: "22px" }}
+                    fontWeight="bold"
+                    minW={{ base: "50px", md: "60px" }}
+                    textAlign="right"
+                  >
+                    {dia.temp}°C
+                  </Text>
+                </Flex>
 
-              {index < previsao.length - 1 && (
-                <Box h="1px" bg="whiteAlpha.200" mx={3} my={1} />
-              )}
-            </Box>
-          )
+                {index < previsao.length - 1 && (
+                  <Box h="1px" bg="whiteAlpha.200" mx={3} my={1} />
+                )}
+              </Box>
+            );
           })}
         </Box>
       </Box>
