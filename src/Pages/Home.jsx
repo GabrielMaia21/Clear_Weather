@@ -18,7 +18,7 @@ import busca from "../assets/icons/interface/busca.png";
 import logo from "../assets/icons/home/logo.webp";
 import { buscarCidade } from "../Services/GeoApi";
 
-function Home2() {
+function Home() {
   const [cidade, setCidade] = useState("");
   const [sugestoes, setSugestoes] = useState([]);
   const navigate = useNavigate();
@@ -178,7 +178,6 @@ function Home2() {
                 w={{ md: "100%", sm: "450px" }}
                 bg="rgba(13, 18, 30, 0.95)"
                 borderRadius="12px"
-                // zIndex={999}
                 color="white"
                 boxShadow="dark-lg"
                 listStyleType="none"
@@ -193,7 +192,6 @@ function Home2() {
                     fontSize={{ md: "18px", sm: "15px" }}
                     key={index}
                     color="white"
-                    // zIndex={999}
                     cursor={"pointer"}
                     opacity={0.8}
                     fontWeight={"light"}
@@ -240,4 +238,4 @@ function Home2() {
   );
 }
 
-export default Home2;
+export default Home;

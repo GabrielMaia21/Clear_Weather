@@ -46,7 +46,7 @@ function Previsao3Horas({ horas }) {
       mb={4}
       w="100%"
       maxW="520px"
-      boxShadow="xl"
+      boxShadow="dark-lg"
     >
       {/* Título */}
       <Text

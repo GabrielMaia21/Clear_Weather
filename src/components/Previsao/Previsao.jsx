@@ -35,12 +35,13 @@ function Previsao({ previsao }) {
   return (
     <Box>
       <Box
+      boxShadow="dark-lg"
         bg="rgba(32, 43, 61, 1)"
         borderRadius="xl"
         p={5} 
         w="320px"
         h="627px"
-        boxShadow="lg"
+
         display="flex"
         flexDirection="column"
       >
