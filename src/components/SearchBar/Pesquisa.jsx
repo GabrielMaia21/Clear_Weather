@@ -55,29 +55,29 @@ function Pesquisa({ onPesquisa }) {
         overflow="visible"
         mx="auto"
         w="100%"
-        maxW={{ base: "340px", sm: "450px", md: "700px", lg: "897px" }}
+        maxW={{ base: "100%", sm: "100%", md: "100%", lg: "897px" }}
       >
         <InputGroup
           w="100%"
-          maxW={{ lg: "897px", md: "897px", sm: "450px" }}
+          maxW={{ lg: "897px", md: "100%", sm: "100%", base: "100%" }}
           boxShadow={"dark-lg"}
           mx={"auto"}
           borderRadius={12}
           opacity={"0.8"}
-          mt={{ md: 5, base: 12 }}
+          mt={{ md: 5, base: 7 }}
           border="1px solid #ffffff1d"
         >
           <InputLeftElement
-            w={{ md: "70px", sm: "55px" }}
-            minH={{ lg: "51px", md: "45px", sm: "39px" }}
+            w={{ md: "70px", sm: "55px", base: "40px" }}
+            h={{ lg: "51px", md: "45px", sm: "39px", base: "33px" }}
           >
-            <Image w={{ md: "26px", sm: "24px" }} src={busca} />
+            <Image w={{ md: "26px", sm: "24px", base: "20px" }} src={busca} />
           </InputLeftElement>
           <Input
             value={cidade}
-            h={{ lg: "51px", md: "45px", sm: "39px" }}
+            h={{ lg: "51px", md: "45px", sm: "39px", base: "33px" }}
             type="text"
-            fontSize={{ lg: "18px", md: "16px", sm: "14px" }}
+            fontSize={{ lg: "18px", md: "16px", sm: "14px", base: "13px" }}
             placeholder="Digite o nome da Cidade"
             _placeholder={{ color: "rgba(255, 255, 255, 0.8)" }}
             pl={{ md: "65px", sm: "55px" }}
@@ -95,7 +95,7 @@ function Pesquisa({ onPesquisa }) {
             top="101%"
             left={0}
             right={0}
-            w={{ md: "100%", sm: "450px" }}
+            w={"100%"}
             mt={"6px"}
             bg="rgba(13, 18, 30, 0.95)"
             color="white"
@@ -109,7 +109,7 @@ function Pesquisa({ onPesquisa }) {
               <Box
                 as="li"
                 bg="rgba(13, 18, 30, 1)"
-                p={{ md: "10px 12px", sm: "12px" }}
+                p={{ md: "10px 12px", sm: "12px", base: "10px" }}
                 fontSize={{ md: "18px", sm: "15px" }}
                 key={index}
                 color="white"

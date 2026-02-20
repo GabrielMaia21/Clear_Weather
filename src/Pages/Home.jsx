@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { Icon } from "@chakra-ui/react";
 
 import background from "../assets/icons/home/bg-image.webp";
 import busca from "../assets/icons/interface/busca.png";
@@ -78,17 +79,17 @@ function Home() {
             gap={1}
             cursor={"default"}
           >
-            <Image src={logo} w={"52px"} />
-            <Text fontSize={28}>ClearWeather</Text>
+            <Image src={logo} w={{sm: "52px", base: "28px"}} />
+            <Text fontSize={{sm: 28, base: 16}}>ClearWeather</Text>
           </Box>
           <Link
             href="https://github.com/GabrielMaia21/Clear_Weather"
             target="_blank"
           >
             <Box display={"flex"} alignItems={"center"} gap={2}>
-              <FaGithub size={22} />
+              <Icon as={FaGithub} boxSize={{base: "20px", sm: "28px"}} />
               <Text
-                fontSize={22}
+                fontSize={{base: "16px", sm: "28px"}}
                 fontWeight={"light"}
                 textColor={"#ffffffda"}
                 transition={"all 0.2s"}
@@ -111,9 +112,9 @@ function Home() {
         flexDir={"column"}
       >
         <Box display={"flex"} alignItems={"center"} gap={4} cursor={"default"}>
-          <Image src={logo} w={{ lg: "102px", md: "90px", sm: "78px" }} />
+          <Image src={logo} w={{ lg: "102px", md: "90px", sm: "78px", base: "66px" }} />
           <Text
-            fontSize={{ lg: "56px", md: "48px", sm: "40px" }}
+            fontSize={{ lg: "56px", md: "48px", sm: "40px", base: "32px" }}
             textColor={"#ffffffda"}
           >
             ClearWeather
@@ -121,7 +122,7 @@ function Home() {
         </Box>
         <Box>
           <Text
-            fontSize={{ lg: "25px", md: "22px", sm: "17px" }}
+            fontSize={{ lg: "25px", md: "22px", sm: "17px", base: "13px" }}
             fontWeight={"normal"}
             textColor={"#ffffffda"}
           >
@@ -139,7 +140,7 @@ function Home() {
           >
             <InputGroup
               w="100%"
-              maxW={{ md: "700px", lg: "800px", sm: "450px" }}
+              maxW={{ md: "700px", lg: "800px", sm: "450px", base: "450px" }}
               boxShadow={"dark-lg"}
               mx={"auto"}
               borderRadius={12}
@@ -148,19 +149,19 @@ function Home() {
               border="1px solid #ffffff1d"
             >
               <InputLeftElement
-                w={{ md: "70px", sm: "55px" }}
-                minH={{ lg: "71px", md: "65px", sm: "59px" }}
+                w={{ md: "70px", sm: "55px", base:"40px" }}
+                minH={{ lg: "71px", md: "65px", sm: "59px", base: "53px" }}
               >
-                <Image w={{ md: "28px", sm: "26px" }} src={busca} />
+                <Image w={{ md: "28px", sm: "26px", base: "22px" }} src={busca} />
               </InputLeftElement>
               <Input
                 value={cidade}
-                h={{ lg: "71px", md: "65px", sm: "59px" }}
+                h={{ lg: "71px", md: "65px", sm: "59px",base: "52px" }}
                 type="text"
-                fontSize={{ lg: "22px", md: "20px", sm: "18px" }}
+                fontSize={{ lg: "22px", md: "20px", sm: "18px", base: "16px" }}
                 placeholder="Digite o nome da Cidade"
                 _placeholder={{ color: "rgba(255, 255, 255, 0.8)" }}
-                pl={{ md: "65px", sm: "55px" }}
+                pl={{ md: "65px", sm: "55px", base: "45px" }}
                 fontWeight={"light"}
                 size={18}
                 bg="#20304F"
@@ -175,7 +176,7 @@ function Home() {
                 top="100%"
                 left={0}
                 right={0}
-                w={{ md: "100%", sm: "450px" }}
+                w={"100%"}
                 bg="rgba(13, 18, 30, 0.95)"
                 borderRadius="12px"
                 color="white"
@@ -188,8 +189,8 @@ function Home() {
                   <Box
                     as="li"
                     bg="rgba(13, 18, 30, 1)"
-                    p={{ md: "10px 12px", sm: "12px" }}
-                    fontSize={{ md: "18px", sm: "15px" }}
+                    p={{ md: "10px 12px", sm: "12px", base: "10px" }}
+                    fontSize={{ md: "18px", sm: "15px", base: "13px" }}
                     key={index}
                     color="white"
                     cursor={"pointer"}
@@ -220,7 +221,7 @@ function Home() {
         pb={{ base: 10, md: 0 }}
       >
         <Text
-          fontSize={{ lg: "25px", md: "22px", sm: "19px" }}
+          fontSize={{ lg: "25px", md: "22px", sm: "19px", base: "14px" }}
           textColor={"#ffffffda"}
           fontWeight={"light"}
         >

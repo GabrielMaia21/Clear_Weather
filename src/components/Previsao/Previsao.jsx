@@ -40,7 +40,7 @@ function Previsao({ previsao }) {
         borderRadius="xl"
         p={{ base: 4, md: 5 }}
         w="100%"
-        maxW="419px"
+        maxW="897px"
         h={{ base: "auto", md: "810px" }}
         display="flex"
         flexDirection="column"

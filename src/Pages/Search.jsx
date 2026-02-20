@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 
 import Pesquisa from "../components/SearchBar/Pesquisa";
-import Cards from "../components/WatherCard/Cards";
+import Cards from "../components/WeatherCard/Cards";
 import Error from "../components/ErrorMessage/Error";
 import {
   pesquisarPorCidade,
@@ -55,16 +55,16 @@ function Search() {
       h="100%"
       mt={8}
       px={4}
+      pb={12}
     >
-      <Box 
+      <Box
         display="flex"
-        flexDirection={{ base: "column", md: "row", lg: "row" }}
-        gap={8} 
-        alignItems="flex-start" 
-        w="100%" 
+        flexDirection={{ base: "column", md: "column", lg: "row" }}
+        gap={8}
+        alignItems="flex-start"
+        w="100%"
         maxW="1340px"
       >
-        
         <Box display="flex" gap={6} flexDir={"column"} w="100%" maxW="897px">
           <Pesquisa onPesquisa={pesquisar} />
 
@@ -90,7 +90,11 @@ function Search() {
         </Box>
 
         {climaQuery.data && previsaoQuery.data?.length > 0 && (
-          <Box alignSelf={{lg: "end", base: "auto"}} w="100%" maxW={"420px"}>
+          <Box
+            alignSelf={{ lg: "end", base: "auto" }}
+            w="100%"
+            maxW={{ lg: "420px", md: "100%", base: "100%" }}
+          >
             <Previsao previsao={previsaoQuery.data} />
           </Box>
         )}
