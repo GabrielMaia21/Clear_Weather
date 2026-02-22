@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
+import { Box, Text, Spinner, VStack } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { chakra } from "@chakra-ui/react";
+const MotionBox = chakra(motion.div);
 
 import Pesquisa from "../components/SearchBar/Pesquisa";
 import Cards from "../components/WeatherCard/Cards";
@@ -13,7 +17,6 @@ import {
 import CondicoesClima from "../components/Condicoes/CondicoesClima";
 import Previsao3Horas from "../components/Previsao3horas/Previsao3horas";
 import Previsao from "../components/Previsao/Previsao";
-import { Box, Text, Spinner, VStack } from "@chakra-ui/react";
 
 function Search() {
   const [cidade, setCidade] = useState("");
@@ -46,7 +49,11 @@ function Search() {
     setCidade(cidadeDigitada.trim());
   }
 
-  if (climaQuery.isLoading || previsaoQuery.isLoading || previsao3HorasQuery.isLoading) {
+  if (
+    climaQuery.isLoading ||
+    previsaoQuery.isLoading ||
+    previsao3HorasQuery.isLoading
+  ) {
     return (
       <Box
         display="flex"
@@ -55,8 +62,8 @@ function Search() {
         minH="100vh"
       >
         <VStack>
-        <Spinner size="xl" borderWidth="4px" mb={2}/>
-        <Text>Carregando...</Text>
+          <Spinner size="xl" borderWidth="4px" mb={2} />
+          <Text>Carregando...</Text>
         </VStack>
       </Box>
     );
@@ -81,7 +88,16 @@ function Search() {
         w="100%"
         maxW="1340px"
       >
-        <Box display="flex" gap={6} flexDir={"column"} w="100%" maxW="897px">
+        <MotionBox
+          display="flex"
+          gap={6}
+          flexDir={"column"}
+          w="100%"
+          maxW="897px"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <Pesquisa onPesquisa={pesquisar} />
 
           {(climaQuery.isError || previsaoQuery.isError) && (
@@ -99,16 +115,19 @@ function Search() {
             clima={climaQuery.data}
             chanceChuva={previsaoQuery.data?.[0]?.chanceChuva ?? 0}
           />
-        </Box>
+        </MotionBox>
 
         {climaQuery.data && previsaoQuery.data?.length > 0 && (
-          <Box
+          <MotionBox
             alignSelf={{ lg: "end", base: "auto" }}
             w="100%"
             maxW={{ lg: "420px", md: "100%", base: "100%" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
           >
             <Previsao previsao={previsaoQuery.data} />
-          </Box>
+          </MotionBox>
         )}
       </Box>
     </Box>
