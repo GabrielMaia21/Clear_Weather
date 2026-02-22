@@ -13,7 +13,7 @@ import {
 import CondicoesClima from "../components/Condicoes/CondicoesClima";
 import Previsao3Horas from "../components/Previsao3horas/Previsao3horas";
 import Previsao from "../components/Previsao/Previsao";
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Text, Spinner, VStack } from "@chakra-ui/react";
 
 function Search() {
   const [cidade, setCidade] = useState("");
@@ -46,6 +46,22 @@ function Search() {
     setCidade(cidadeDigitada.trim());
   }
 
+  if (climaQuery.isLoading || previsaoQuery.isLoading || previsao3HorasQuery.isLoading) {
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minH="100vh"
+      >
+        <VStack>
+        <Spinner size="xl" borderWidth="4px" mb={2}/>
+        <Text>Carregando...</Text>
+        </VStack>
+      </Box>
+    );
+  }
+
   return (
     <Box
       as="main"
@@ -67,10 +83,6 @@ function Search() {
       >
         <Box display="flex" gap={6} flexDir={"column"} w="100%" maxW="897px">
           <Pesquisa onPesquisa={pesquisar} />
-
-          {(climaQuery.isLoading || previsaoQuery.isLoading) && (
-            <p>Carregando...</p>
-          )}
 
           {(climaQuery.isError || previsaoQuery.isError) && (
             <Error message="Cidade não encontrada" />
