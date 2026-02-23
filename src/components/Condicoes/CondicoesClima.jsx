@@ -11,7 +11,7 @@ function CondicoesClima({ clima, chanceChuva }) {
       p={{ base: 4, md: 5 }}
       w="100%"
       maxW="897px"
-      h={{ base: "auto", md: "252px" }}
+      h={{ base: "auto", md: "240px" }}
       boxShadow="dark-lg"
     >
       <Text

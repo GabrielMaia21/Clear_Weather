@@ -78,7 +78,7 @@ function Search() {
       h="100%"
       mt={8}
       px={4}
-      pb={12}
+      pb={{ base: 12, sm: 12, md: 6}}
     >
       <Box
         display="flex"
@@ -96,7 +96,7 @@ function Search() {
           maxW="897px"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.7 }}
         >
           <Pesquisa onPesquisa={pesquisar} />
 
@@ -124,7 +124,7 @@ function Search() {
             maxW={{ lg: "420px", md: "100%", base: "100%" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.7 }}
           >
             <Previsao previsao={previsaoQuery.data} />
           </MotionBox>
