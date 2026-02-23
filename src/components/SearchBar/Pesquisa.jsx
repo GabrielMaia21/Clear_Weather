@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,  } from "react";
 import {
   Input,
   InputGroup,
@@ -7,27 +7,27 @@ import {
   Text,
   Box,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+
 import { buscarCidade } from "../../Services/GeoApi";
 import busca from "../../assets/icons/interface/busca.png";
 
 function Pesquisa({ onPesquisa }) {
   const [cidade, setCidade] = useState("");
   const [sugestoes, setSugestoes] = useState([]);
+  const navigate = useNavigate();
 
   function enviar(envio) {
     envio.preventDefault();
 
     if (!cidade.trim()) return;
-    setSugestoes([]);
-    onPesquisa(cidade);
-    setCidade("");
+    navigate(`/search?city=${encodeURIComponent(cidade.trim())}`);
+    setSugestoes([])
   }
 
   function selecionarCidade(item) {
     setCidade(item.cidade);
-    setSugestoes([]);
-    setCidade("");
-    onPesquisa(item.cidade);
+    navigate(`/search?city=${encodeURIComponent(item.cidade)}`);
   }
 
   async function alterarValor(e) {

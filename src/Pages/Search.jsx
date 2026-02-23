@@ -69,24 +69,41 @@ function Search() {
     );
   }
 
+  const container = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
   return (
-    <Box
+    <MotionBox
       as="main"
       display={"flex"}
       justifyContent={"center"}
       w="100vw"
       h="100%"
-      mt={8}
+      mt={6}
       px={4}
-      pb={{ base: 12, sm: 12, md: 6}}
+      pb={{ base: 12, sm: 12, md: 6 }}
     >
-      <Box
+      <MotionBox
         display="flex"
         flexDirection={{ base: "column", md: "column", lg: "row" }}
         gap={8}
         alignItems="flex-start"
         w="100%"
         maxW="1340px"
+        variants={container}
+        initial="hidden"
+        animate="show"
       >
         <MotionBox
           display="flex"
@@ -98,23 +115,30 @@ function Search() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7 }}
         >
-          <Pesquisa onPesquisa={pesquisar} />
+          <Box display="flex" gap={6} flexDir="column" w="100%" maxW="897px">
+            <Pesquisa onPesquisa={pesquisar} />
 
-          {(climaQuery.isError || previsaoQuery.isError) && (
-            <Error message="Cidade não encontrada" />
-          )}
+            {(climaQuery.isError || previsaoQuery.isError) && (
+              <Error message="Cidade não encontrada" />
+            )}
+            <MotionBox variants={item}>
+              <Cards
+                clima={climaQuery.data}
+                chanceChuva={previsaoQuery.data?.[0]?.chanceChuva ?? 0}
+              />
+            </MotionBox>
 
-          <Cards
-            clima={climaQuery.data}
-            chanceChuva={previsaoQuery.data?.[0]?.chanceChuva ?? 0}
-          />
+            <MotionBox variants={item}>
+              <Previsao3Horas horas={previsao3HorasQuery.data} />
+            </MotionBox>
 
-          <Previsao3Horas horas={previsao3HorasQuery.data} />
-
-          <CondicoesClima
-            clima={climaQuery.data}
-            chanceChuva={previsaoQuery.data?.[0]?.chanceChuva ?? 0}
-          />
+            <MotionBox variants={item}>
+              <CondicoesClima
+                clima={climaQuery.data}
+                chanceChuva={previsaoQuery.data?.[0]?.chanceChuva ?? 0}
+              />
+            </MotionBox>
+          </Box>
         </MotionBox>
 
         {climaQuery.data && previsaoQuery.data?.length > 0 && (
@@ -122,15 +146,13 @@ function Search() {
             alignSelf={{ lg: "end", base: "auto" }}
             w="100%"
             maxW={{ lg: "420px", md: "100%", base: "100%" }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7 }}
+            variants={item}
           >
             <Previsao previsao={previsaoQuery.data} />
           </MotionBox>
         )}
-      </Box>
-    </Box>
+      </MotionBox>
+    </MotionBox>
   );
 }
 export default Search;
