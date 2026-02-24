@@ -7,7 +7,7 @@ const API_KEY = import.meta.env.VITE_API_KEY2;
 export async function buscarCidade(cidade) {
   try {
     const resposta = await axios.get(
-      "http://api.openweathermap.org/geo/1.0/direct",
+      "https://api.openweathermap.org/geo/1.0/direct",
       {
         params: {
           q: cidade,
