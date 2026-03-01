@@ -1,60 +1,87 @@
-## Fontes e tamanhos
+# 🌤️ ClearWeather
 
-**Fonte principal:** Inter
-
-**Geral:**
-
-| Uso               | Tamanho | Weight  | 
-| ----------------- | ------- | ------- | 
-| Cidade            | 36px    | 700     |
-| Chance de chuva   | 14px    | 400     |
-| Temperatura atual | 64px    | 700     | 
-| Títulos de divs   | 18px    | 500     | 
-| Texto padrão      | 18px    | 500     | 
-
-**Condições Climaticas**:
-
-| Uso               | Tamanho | Weight  | 
-| ----------------- | ------- | ------- | 
-| Titulo            | 18px    | 500     |
-| Texto             | 22px    | 500     |
-| Valores           | 28px    | 600-700 |
-
-**Icones**:
-
-| Uso                  | Tamanho | 
-| -------------------- | ------- |
-| Principal            | 216px   |
-| Busca                | 24px    |
-| Previsão de hoje     | 74px    |
-| Condições climaticas | 32px    |
-| Previsão de 5 dias   | 65px    |
-
+Aplicação web de previsão do tempo que permite pesquisar cidades com autocomplete inteligente e visualizar dados climáticos atuais e previsão para os próximos dias.
 
 ---
 
-## Cores
+## 🚀 Funcionalidades
 
-**Background principal:**
-
-* `#0B1220` 
-
-**Background das divs:**
-
-* `#202B3D`
-
-**Cor do Texto:**
-
-* Maioria é branco, ou branco com opacidade de 70%
+- Busca de cidades com autocomplete
+- Conversão do nome digitado em sugestões
+- Exibição do clima atual
+- Previsão para 5 dias (intervalos de 3 horas)
+- Layout totalmente responsivo
+- Animações suaves com Framer Motion
 
 ---
 
-## Espaçamento
+## 🛠️ Tecnologias Utilizadas
 
-* Border radius padrão das divs: **16px**
-* Padding interno dos cards: **20px**
-* Margem entre seções: **32px**
+- React
+- Vite
+- Chakra UI
+- Framer Motion
+- Axios
+- React Query
+- APIs da OpenWeather
 
 ---
 
-Qualquer dúvida, dá uma olhada aqui: https://www.figma.com/design/IQHzrfWlfhjea6vzMJrbhD/WeatherNow?node-id=0-1&t=Ypt04Q9gZPGrbvqy-1
+## 🌐 APIs Utilizadas
+
+### 1️⃣ Geocoding API
+Utilizada para transformar o nome da cidade digitada pelo usuário em sugestões de pesquisas.
+
+### 2️⃣ Current Weather Data API
+Responsável por fornecer os dados climáticos atuais da cidade selecionada.
+
+### 3️⃣ 5 Day / 3 Hour Forecast API
+Fornece a previsão do tempo para os próximos 5 dias, com intervalos de 3 em 3 horas.
+
+---
+
+## 🧠 Conceitos Aplicados
+
+- Consumo de API REST
+- Gerenciamento de estado com React Query
+- Tratamento de erros de requisição
+- Componentização
+- Responsividade com Chakra UI
+- Animações com Framer Motion
+- Deploy na Vercel
+
+---
+
+## ⚙️ Como Rodar o Projeto
+
+```
+# Acesse em: https://clear-weather.vercel.app/
+
+ou
+
+# Clone o repositório
+git clone https://github.com/seu-usuario/clearweather.git
+
+# Entre na pasta
+cd clearweather
+
+# Instale as dependências
+npm install
+
+# Adicione um arquivo .env na raíz do projeto e adicione suas chaves de APIs
+
+# Rode o projeto
+npm run dev
+
+```
+
+---
+
+## 👨‍💻 Desenvolvedores
+
+Projeto desenvolvido por:
+
+- Felipe Gomes (@felipegs0)
+- Gabriel Maia (@GabrielMaia21)
+- Samilly Reis (@samillyoliveiradosreissilva-coder)
+- Elaine Santos (@Elaynecs)
